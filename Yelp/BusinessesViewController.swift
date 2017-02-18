@@ -14,6 +14,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var thumbImageView: UIImageView!
     var businesses: [Business]!
     var searchBar: UISearchBar!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,15 +81,17 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    /*
+    /*@IBAction func about(sender: AnyObject){
+        performSegue(withIdentifier: "toMap", sender: sender)
+    }*/
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
-     }
-     */
-    
+     }*/
+
 }
 

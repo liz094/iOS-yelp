@@ -7,10 +7,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Yelp-->
+        <!--Businesses View Controller-->
         <scene sceneID="5L9-Uz-lNK">
             <objects>
                 <viewController id="2xI-yr-O5N" customClass="BusinessesViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
@@ -128,7 +129,27 @@
                             <constraint firstItem="VBY-gq-v8E" firstAttribute="top" secondItem="ozO-uo-v33" secondAttribute="bottom" id="Y4G-NQ-ewP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Yelp" id="JaF-IG-U0p"/>
+                    <navigationItem key="navigationItem" prompt="      " id="JaF-IG-U0p">
+                        <nil key="title"/>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Filter" id="ad2-sE-86V">
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="JkY-a3-V8s">
+                                <view key="customView" contentMode="scaleToFill" id="1UR-Hk-zUa">
+                                    <rect key="frame" x="63" y="37" width="1" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="IP2-Ej-ETl">
+                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="tZg-iO-Gs5" kind="push" id="8Nx-yk-lMU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ozO-uo-v33" id="aXL-I5-jqw"/>
                     </connections>
@@ -137,14 +158,51 @@
             </objects>
             <point key="canvasLocation" x="2725.5999999999999" y="356.67166416791605"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Lqv-8B-EpF">
+            <objects>
+                <viewController id="tZg-iO-Gs5" customClass="MapViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CgZ-As-Srf"/>
+                        <viewControllerLayoutGuide type="bottom" id="hhu-mu-xGS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UHu-9w-sEe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEx-3Y-zZx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sEx-3Y-zZx" firstAttribute="top" secondItem="UHu-9w-sEe" secondAttribute="top" id="0dY-d2-Gk4"/>
+                            <constraint firstItem="hhu-mu-xGS" firstAttribute="top" secondItem="sEx-3Y-zZx" secondAttribute="bottom" id="B3R-um-vWC"/>
+                            <constraint firstItem="sEx-3Y-zZx" firstAttribute="leading" secondItem="UHu-9w-sEe" secondAttribute="leading" id="R7g-63-FnE"/>
+                            <constraint firstAttribute="trailing" secondItem="sEx-3Y-zZx" secondAttribute="trailing" id="UAn-Hb-hP8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" prompt="      " id="DfR-Zk-kK4"/>
+                    <connections>
+                        <outlet property="mapView" destination="sEx-3Y-zZx" id="dGe-Ww-tgO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="60m-rL-MOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3526" y="357"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="PEF-QF-GxY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="raK-XN-EQB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tmh-cY-ctG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tmh-cY-ctG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.72485723350253806" green="0.11265881415599049" blue="0.048029686921285161" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
